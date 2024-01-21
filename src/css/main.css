@@ -6,6 +6,9 @@ body {
   background-color: var(--clr-main-blue);
   font-size: var(--fs-body);
   font-weight: var(--fw-700);
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
 }
 
 .container {
