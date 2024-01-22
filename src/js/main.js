@@ -9,7 +9,7 @@
 
   let currentValue = '';
   let operator = null;
-  let currSum = 0;
+  let total = 0;
   let prevOperator = null;
 
   function handleButtonClick(button) {
@@ -36,7 +36,7 @@
         return ((currNum / prevNum)).toString();
 
       default:
-        throw Error('something wrong');
+        return 'Invalid Operation';
     }
   }
   function handleOperationClick(op) {
@@ -44,10 +44,10 @@
       const operatorVal = op.innerText;
       operator = operatorVal;
       if (currentValue !== '') {
-        if (currSum === 0) {
-          currSum = currentValue;
+        if (total === 0) {
+          total = currentValue;
         } else {
-          currSum = Calculate(currSum, currentValue, prevOperator);
+          total = Calculate(total, currentValue, prevOperator);
         }
       }
       currentValue = '';
@@ -60,16 +60,16 @@
   function handleResetClick() {
     input.value = '';
     currentValue = '';
-    currSum = 0;
+    total = 0;
     operator = null;
   }
   function handleEqualClick() {
     try {
-      if (equal.innerText === '=') {
-        currSum = Calculate(currSum, currentValue, operator);
+      if (operator === '=') {
+        total = Calculate(total, currentValue, operator);
         currentValue = '';
         operator = null;
-        input.value = currSum;
+        input.value = total;
       }
     } catch (error) {
       throw new Error(error);
@@ -92,11 +92,11 @@
   del.addEventListener('click', () => {
     if (input.value !== '') {
       input.value = input.value.slice(0, -1);
-      currSum = input.value;
+      total = input.value;
       currentValue = currentValue.slice(0, -1);
       console.log(typeof currSum);
       console.log('curr', currentValue);
-      console.log('currSum', currSum);
+      console.log('currSum', total);
     }
   });
   dot.addEventListener('click', () => {
