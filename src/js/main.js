@@ -92,6 +92,11 @@
   del.addEventListener('click', () => {
     if (input.value !== '') {
       input.value = input.value.slice(0, -1);
+      currSum = input.value;
+      currentValue = currentValue.slice(0, -1);
+      console.log(typeof currSum);
+      console.log('curr', currentValue);
+      console.log('currSum', currSum);
     }
   });
   dot.addEventListener('click', () => {
